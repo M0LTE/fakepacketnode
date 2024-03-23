@@ -14,6 +14,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+// https://learn.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis?view=aspnetcore-8.0
+
 app.MapGet("/xrouter/api/v1/mail/msgs", (
     int? offset, 
     int? maxitems,
