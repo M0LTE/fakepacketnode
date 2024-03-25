@@ -16,7 +16,7 @@ if (app.Environment.IsDevelopment())
 
 // https://learn.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis?view=aspnetcore-8.0
 
-app.MapGet("/xrouter/api/v1/mail/msgs", (
+app.MapGet("/api/v1/mail/msgs", (
     int? offset, 
     int? maxitems,
     string? to,
@@ -28,50 +28,56 @@ app.MapGet("/xrouter/api/v1/mail/msgs", (
         new MessageListing{
             id = 444,
             mid = "m_444",
-            rcvd = "Mon, 14 Sep 1997 23:47:00 GMT",
+            rcvd = 1711252093,
             size = 31,
             type = "P",
             status = "R",
             to = "M0LTE@GB7RDG.#42.GBR.EURO",
             from = "g8pzt",
-            subject = "Hello world"
+            subject = "Hello world",
+            links = new ListingLinks { view = "blah" }
         }, new MessageListing{
             id = 445,
             mid = "m_445",
-            rcvd = "Tue, 16 Oct 1997 22:43:15 GMT",
+            rcvd = 1711272093,
             size = 12,
             type = "P",
             status = "R",
             to = "g8pzt",
             from = "M0LTE@GB7RDG.#42.GBR.EURO",
-            subject = "Re: Hello world"
+            subject = "Re: Hello world",
+            links = new ListingLinks { view = "blah" }
         },
     };
 })
 .WithName("GetMessageList")
 .WithOpenApi();
 
-app.MapGet("/xrouter/api/v1/mail/msgs/{msgNumber}", (int msgNumber) => {
+app.MapGet("/api/v1/mail/msgs/{msgNumber}", (int msgNumber) =>
+{
     return msgNumber == 444
         ? Results.Ok(new Message
         {
             id = 444,
             mid = "m_444",
-            rcvd = "Mon, 14 Sep 1997 23:47:00 GMT",
+            rcvd = 1711252093,
             size = 10,
             type = "P",
             status = "R",
             to = "M0LTE@GB7RDG.#42.GBR.EURO",
             from = "g8pzt",
             subject = "Hello world",
-            text = "This is the body of the message"
+            text = "This is the body of the message",
+            links = new ListingLinks { view = "blah" }
         })
         : Results.NotFound();
 })
 .WithName("GetMessage")
-.WithOpenApi();
+.WithOpenApi()
+.Produces<Message>(StatusCodes.Status200OK)
+.Produces(StatusCodes.Status404NotFound);
 
-app.MapPost("/xrouter/api/v1/mail/msgs", (PostMessage msg) => {
+app.MapPost("/api/v1/mail/msgs", (PostMessage msg) => {
     return new PostResponse { id = new Random().Next(1000) };
 })
 .WithName("PostMessage")
@@ -97,10 +103,7 @@ internal record MessageListing
 {
     public required int id { get; set; }
     public required string mid { get; set; }
-    /// <summary>
-    /// in format "Mon, 14 Sep 1997 23:47:00 GMT"
-    /// </summary>
-    public required string rcvd { get; set; }
+    public required long rcvd { get; set; }
     public required int size { get; set; }
     /// <summary>
     /// type and status may in future be unambiguous words
@@ -116,6 +119,12 @@ internal record MessageListing
     public required string to { get; set; }
     public required string from { get; set; }
     public required string subject { get; set; }
+    public required ListingLinks links { get; set; }
+}
+
+internal record ListingLinks
+{
+    public required string view { get; set; }
 }
 
 internal record Message : MessageListing

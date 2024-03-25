@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fakepacketnode", "fakepacketnode\fakepacketnode.csproj", "{966D0B4C-A417-4C76-9E84-1E19B5E2220F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fakepacketnode", "fakepacketnode\fakepacketnode.csproj", "{966D0B4C-A417-4C76-9E84-1E19B5E2220F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "packetnodeapiclient", "packetnodeapiclient\packetnodeapiclient.csproj", "{BFEAD98F-2DA4-4F8D-8591-62A9871CF866}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "packetnodeapiclient.tests", "packetnodeapiclient.tests\packetnodeapiclient.tests.csproj", "{FF62C2FE-448A-4020-A868-A716FDC3C7F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{966D0B4C-A417-4C76-9E84-1E19B5E2220F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{966D0B4C-A417-4C76-9E84-1E19B5E2220F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{966D0B4C-A417-4C76-9E84-1E19B5E2220F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFEAD98F-2DA4-4F8D-8591-62A9871CF866}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFEAD98F-2DA4-4F8D-8591-62A9871CF866}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFEAD98F-2DA4-4F8D-8591-62A9871CF866}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFEAD98F-2DA4-4F8D-8591-62A9871CF866}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF62C2FE-448A-4020-A868-A716FDC3C7F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF62C2FE-448A-4020-A868-A716FDC3C7F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF62C2FE-448A-4020-A868-A716FDC3C7F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF62C2FE-448A-4020-A868-A716FDC3C7F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
