@@ -16,4 +16,17 @@ if (app.Environment.IsDevelopment())
 
 // https://learn.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis?view=aspnetcore-8.0
 
+/*
+/api/request_token
+
+Authorization: Bearer
+
+/api/ports
+/api/nodes
+/api/users
+/api/info
+/api/links
+/api/mheardport
+ */
+
 app.Run();
